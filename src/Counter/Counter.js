@@ -10,13 +10,12 @@ export default class Counter extends Component {
         // this.setState({
         //     counter: this.state.counter + 1
         // })
-
-        //  
         this.setState((prevState) => {
-            return (
-                counter: prevState.counter + 1
-            })
-        }
+            return {
+                counter: prevState.counter +1
+            }
+        })
+     
     }
     
     render() {

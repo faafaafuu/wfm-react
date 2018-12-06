@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
+
 import './car.scss' 
 
 export default class Car extends Component {
@@ -39,4 +41,9 @@ export default class Car extends Component {
             </div>
         )
     }
+}
+
+Car.propTypes = {
+    name: PropTypes.string.isRequired,
+    year: PropTypes.number
 }

@@ -7,8 +7,8 @@ import Counter from './Counter/Counter'
 class App extends Component {
   state={
     cars:[
-      // {name: 'Audi', year:"2014"},
-      // {name:'BMW', year:"2015" },
+      {name: 'Audi', year:"2014"},
+      {name:'BMW', year:"2015" },
       {name:'Mersedess', year:"2016" }
     ],
     pageTitle: 'React components',
@@ -81,7 +81,7 @@ class App extends Component {
 
     return (
       <div className="App" >
-      <Counter/>
+      <Counter/> 
         <h4>{this.state.pageTitle}</h4>
         <button className={"Btn btn "} onClick={this.toggleCarsHandler}>Show</button>
         {cars}
