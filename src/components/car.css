@@ -1,0 +1,16 @@
+.cars {
+    display: block;
+    width: 200px;
+    box-shadow: 0 .1px 2px #444;
+    padding: 20px;
+    margin-left: 10px;
+}
+
+div {
+    margin: 0 auto;
+    width: 400px;
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    justify-content: center;
+}
