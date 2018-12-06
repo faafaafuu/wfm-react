@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Car from './components/car';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 import './App.scss'
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
   componentDidMount() {
     console.log('App componentDidMount')
   }
-
+  // Позволяет получить  неизмененное дом дерево до обновления
   getSnapshotBeforeUpdate() {
     console.log('App getSnapshotBeforeUpdate')
   }
@@ -56,18 +57,24 @@ class App extends Component {
   }
 
   render() {
+    if(Math.random() > 0.7) {
+      throw new Error('Car random failed')
+    }
     console.log('App render')
     let cars = null;
     if(this.state.showCars) {
       cars = 
           this.state.cars.map((e, i) => {
-        return (<Car 
-                  key={i} 
+        return (
+          <ErrorBoundary key={i}>
+            <Car 
                   name={e.name} 
                   year={e.year} 
                   onDelete={this.deleteHandler.bind(this, i)}
                   onChangeName={ev => this.onChangeName(ev.target.value, i)}
-                />)
+                />
+          </ErrorBoundary>        
+        )
       })
     }
 
