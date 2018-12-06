@@ -6,7 +6,7 @@ export default props => {
         <div className="cars">
             <h3>Car name: {props.name}</h3>
             <p>Car yerar: {props.year}</p>
-            <button onClick={props.onChangeTitle}></button>
+            <button onClick={props.onChangeTitle}>Name</button>
         </div>
     )
 }

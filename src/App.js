@@ -16,6 +16,13 @@ class App extends Component {
       pageTitle: newTitle 
     })
   }
+
+  inputTitleHandler = (e) => {
+    this.setState({
+      pageTitle: e.target.value
+    })
+  }
+
   render() {
     const cars = this.state.cars
     
@@ -23,6 +30,7 @@ class App extends Component {
       <div className="App" >
         <h4>{this.state.pageTitle}</h4>
         <button onClick={this.onChangeTitleHandler.bind(this, "Changed")}>Change state</button>
+        <input onChange={this.inputTitleHandler.bind(this)}></input>
         <Car name={cars[0].name} year={cars[0].year} onChangeTitle={this.onChangeTitleHandler.bind(this, cars[0].name)} />
         <Car name={cars[1].name} year={cars[1].year} onChangeTitle={this.onChangeTitleHandler.bind(this, cars[1].name)}/>
         <Car name={cars[2].name} year={cars[2].year} onChangeTitle={this.onChangeTitleHandler.bind(this, cars[2].name)}/>
