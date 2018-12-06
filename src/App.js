@@ -5,13 +5,25 @@ import './App.scss'
 class App extends Component {
   state={
     cars:[
-      {name: 'Audi', year:"2014"},
-      {name:'BMW', year:"2015" },
+      // {name: 'Audi', year:"2014"},
+      // {name:'BMW', year:"2015" },
       {name:'Mersedess', year:"2016" }
     ],
     pageTitle: 'React components',
     showCars: false
   };
+
+  componentWillMount() {
+    console.log('App componentWillMount')
+  }
+
+  componentDidMount() {
+    console.log('App componentDidMount')
+  }
+
+  getSnapshotBeforeUpdate() {
+    console.log('App getSnapshotBeforeUpdate')
+  }
   
   onChangeTitleHandler = (newTitle) => {
     this.setState({
@@ -44,6 +56,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('App render')
     let cars = null;
     if(this.state.showCars) {
       cars = 
@@ -61,7 +74,7 @@ class App extends Component {
     return (
       <div className="App" >
         <h4>{this.state.pageTitle}</h4>
-        <button className={"Btn btn"} onClick={this.toggleCarsHandler}>Show</button>
+        <button className={"Btn btn "} onClick={this.toggleCarsHandler}>Show</button>
         {cars}
       </div>
     );
