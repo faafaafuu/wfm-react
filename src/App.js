@@ -17,6 +17,24 @@ class App extends Component {
       pageTitle: newTitle 
     })
   }
+
+  deleteHandler(i) {
+    const cars = [...this.state.cars];
+    cars.splice(i,1)
+    this.setState({cars})
+
+  }
+
+  onChangeName = (name, i) => {
+    //получаем нужный элемент
+    const car = this.state.cars[i];
+    car.name = name;
+    // клонирование (новый массив)
+    const cars = [...this.state.cars]
+    cars[i] = car
+    // меняем массив
+    this.setState({cars})
+  }
   
   toggleCarsHandler = () => {
     this.setState({
@@ -33,7 +51,9 @@ class App extends Component {
                   key={i} 
                   name={e.name} 
                   year={e.year} 
-                  onChangeTitle={this.onChangeTitleHandler.bind(this, e.name)}/>)
+                  onDelete={this.deleteHandler.bind(this, i)}
+                  onChangeName={ev => this.onChangeName(ev.target.value, i)}
+                />)
       })
     }
 
