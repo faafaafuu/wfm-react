@@ -8,32 +8,40 @@ class App extends Component {
       {name:'BMW', year:"2015" },
       {name:'Mersedess', year:"2016" }
     ],
-    pageTitle: 'React components'
+    pageTitle: 'React components',
+    showCars: false
   };
-
+  
   onChangeTitleHandler = (newTitle) => {
     this.setState({
       pageTitle: newTitle 
     })
   }
-
-  inputTitleHandler = (e) => {
+  
+  toggleCarsHandler = () => {
     this.setState({
-      pageTitle: e.target.value
+      showCars: !this.state.showCars
     })
   }
 
   render() {
-    const cars = this.state.cars
-    
+    let cars = null;
+    if(this.state.showCars) {
+      cars = 
+          this.state.cars.map((e, i) => {
+        return (<Car 
+                  key={i} 
+                  name={e.name} 
+                  year={e.year} 
+                  onChangeTitle={this.onChangeTitleHandler.bind(this, e.name)}/>)
+      })
+    }
+
     return (
       <div className="App" >
         <h4>{this.state.pageTitle}</h4>
-        <button onClick={this.onChangeTitleHandler.bind(this, "Changed")}>Change state</button>
-        <input onChange={this.inputTitleHandler.bind(this)}></input>
-        <Car name={cars[0].name} year={cars[0].year} onChangeTitle={this.onChangeTitleHandler.bind(this, cars[0].name)} />
-        <Car name={cars[1].name} year={cars[1].year} onChangeTitle={this.onChangeTitleHandler.bind(this, cars[1].name)}/>
-        <Car name={cars[2].name} year={cars[2].year} onChangeTitle={this.onChangeTitleHandler.bind(this, cars[2].name)}/>
+        <button onClick={this.toggleCarsHandler}>Show</button>
+        {cars}
       </div>
     );
   }
